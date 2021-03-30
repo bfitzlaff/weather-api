@@ -1,0 +1,55 @@
+name:                weather-api
+version:             0.1.0.0
+github:              "bfitzlaff/weather-api"
+license:             MIT 
+author:              "Brandon Fitzlaff"
+maintainer:          "brandon.fitzlaff@banno.com"
+
+extra-source-files:
+- README.md
+
+description:         Please see the README on GitHub at <https://github.com/bfitzlaff/weather-api#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- aeson
+- dhall
+- http-client-tls
+- lens
+- openapi3
+- servant-client
+- servant-openapi3
+- servant-server
+- text
+- wai
+- warp
+
+library:
+  source-dirs: src
+  ghc-options:
+  - -Wall
+  - -Werror
+  - -fwarn-tabs
+
+executables:
+  weather-api-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - weather-api
+
+tests:
+  weather-api-test:
+    main:                Spec.hs
+    source-dirs:         test
+    dependencies:
+    - base
+    - weather-api
+    - hspec
+    - hspec-discover
+    - QuickCheck
